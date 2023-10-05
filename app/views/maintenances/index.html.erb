@@ -1,0 +1,81 @@
+<!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Mantenimiento</h2>
+          <ol>
+            <li><%= link_to 'Inicio', root_path %></li>
+            <li>Mantenimiento</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+<h1>Mantenimiento</h1>
+
+<div id="maintenances">
+  <% @maintenances.each do |maintenance| %>
+    <%= render maintenance %>
+    <p>
+      <%= link_to "Show this maintenance", maintenance %>
+    </p>
+  <% end %>
+</div>
+
+<!-- ======= Contact Section ======= -->   
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="row mt-5 justify-content-center" data-aos="fade-up">
+      <div class="col-lg-10">
+        <form role="form" class="php-email-form">
+          <h3>Listado de Mantenciones</h3>
+					<div class="row">
+          <div class="mb-3">  
+            <%= form_with method: :get do |form| %>  
+              <%= form.text_field :query_text, placeholder: "buscar", value: params[:query_text], class:"form-control me-2" %>
+              <%= form.submit "buscar", class:"btn btn-secondary" %>
+            <% end %>
+          </div>
+          
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Tipo de Motor</th>
+                <th>Tipo de Mantenimiento</th>
+                <th>Nombre del Motor</th>                
+                <th>Imagen</th>
+                <th>Ver Mantencion</th>                
+              </tr>
+            </thead>  
+              <% @maintenances.each do |maintenance| %>
+                <tbody>
+                  <tr>
+                    <td><%= maintenances.engine_type %></td>
+                    <td><%= maintenances.maintenance_type %></td>
+                    <td><%= maintenances.enginer_name %></td> 
+                    <td><% if maintenances.enginer_image.present? %>
+                        <%= image_tag maintenances.enginer_image.url %>
+                      <% end %></td>
+                    <td>
+                        <%= link_to enginer do %>
+                          <i class="fa-solid fa-eye" style="color: #044ac3;"></i>
+                        <% end %> 
+                    </td>                    
+                  </tr> 
+                </tbody> 
+              <% end %>  
+          </table>    
+          </div> 
+        </form>
+      </div>
+      <div class="class-center">
+        <%== pagy_bootstrap_nav(@pagy) %>
+      </div>
+        
+      <%= link_to "Nueva Mantención", new_maintenance_path, class: 'btn btn-primary' %>
+    </div>
+  </div>  
+</section><!-- End Contact Section -->
+

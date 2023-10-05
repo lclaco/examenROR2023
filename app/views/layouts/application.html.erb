@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jet Maintain</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+<!-- Font Icon -->   
+<%= stylesheet_link_tag "material-design-iconic-font.min.css" %>  
+
+<!-- Font Awesome CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!--  Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+
+<!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Muli:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+  <%= stylesheet_link_tag "animate.min.css" %>
+  <%= stylesheet_link_tag "aos.css" %>
+  <%= stylesheet_link_tag "bootstrap.min.css" %>
+  <%= stylesheet_link_tag "bootstrap-icons.css" %>
+  <%= stylesheet_link_tag "boxicons.min.css" %>
+  <%= stylesheet_link_tag "glightbox.min.css" %>
+  <%= stylesheet_link_tag "swiper-bundle.min.css" %>
+
+  <!-- Template Main CSS File -->
+  <%= stylesheet_link_tag "style.css" %>
+  
+
+<!-- ======= Top Bar ======= -->
+    <section id="topbar" class="d-flex align-items-center">
+      <div class="container d-flex justify-content-center justify-content-md-between">
+        <div class="contact-info d-flex align-items-center">
+          <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:info@jmaintain.cl">info@jmaintain.cl</a></i>
+          <i class="bi bi-phone d-flex align-items-center ms-4"><span>+56 9 4700 000</span></i>        
+          
+            <% if user_signed_in? %>
+              <%= button_to 'Cerrar sesión', destroy_user_session_path, class: 'btn', method: :delete %>
+            <% else %>
+                      
+              <%= button_to 'Iniciar sesión',  new_user_session_path, class: 'btn' %>                         
+
+              <%= link_to 'Crea tu Cuenta',  new_user_registration_path, class: 'btn' %> 
+            <% end %>
+          
+        </div>
+        <div class="social-links d-none d-md-flex align-items-center">
+          <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+        </div>
+      </div>
+    </section>
+
+    <%= render 'shareds/index' %>
+    <main id="main">
+      <%= yield %>
+      </main><!-- End #main -->
+    <%= render 'footers/index' %>
+<!-- Vendor JS Files -->
+  <%= javascript_include_tag "aos.js" %>
+  <%= javascript_include_tag "bootstrap.bundle.min.js" %>
+  <%= javascript_include_tag "glightbox.min.js" %>
+  <%= javascript_include_tag "isotope.pkgd.min.js" %>
+  <%= javascript_include_tag "swiper-bundle.min.js" %>
+  <%= javascript_include_tag "noframework.waypoints.js" %>
+  <%= javascript_include_tag "validate.js" %>
+
+  <!-- Template Main JS File -->
+  <%= javascript_include_tag "main.js" %>  
+  
+  
+
+
+  </body>
+</html>

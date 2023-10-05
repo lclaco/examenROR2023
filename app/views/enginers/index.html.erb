@@ -1,0 +1,93 @@
+<!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Motores</h2>
+          <ol>
+            <li><%= link_to 'Inicio', root_path %></li>
+            <li>Motores</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+<h1>Motores</h1>
+<%
+=begin%>
+ 
+<div id="enginers">
+  <% @enginers.each do |enginer| %>
+    <%= render enginer %>
+    <p>
+      <%= link_to "Show this enginer", enginer %>
+    </p>
+  <% end %>
+</div> 
+<%
+=end%>
+
+
+<!-- ======= Contact Section ======= -->   
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="row mt-5 justify-content-center" data-aos="fade-up">
+      <div class="col-lg-10">
+        <form role="form" class="php-email-form">
+          <h3>Listado de Motores</h3>
+					<div class="row">
+          <div class="mb-3">  
+            <%= form_with method: :get do |form| %>  
+              <%= form.text_field :query_text, placeholder: "buscar", value: params[:query_text], class:"form-control me-2" %>
+              <%= form.submit "buscar", class:"btn btn-secondary" %>
+            <% end %>
+          </div>
+          
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Tipo de Equipamiento</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Ver Motor</th>
+                <th>Agregar Mantención</th>
+              </tr>
+            </thead>  
+              <% @enginers.each do |enginer| %>
+                <tbody>
+                  <tr>
+                    <td>
+                      <% if enginer.image.present? %>
+                        <%= image_tag enginer.image.url %>
+                      <% end %>
+                    </td>
+                    <td><%= enginer.equipment_type %></td>
+                    <td><%= enginer.name %></td>
+                    <td><%= enginer.descripcion %></td>
+                    <td>
+                        <%= link_to enginer do %>
+                          <i class="fa-solid fa-eye" style="color: #044ac3;"></i>
+                        <% end %> 
+                    </td>
+                    <td>
+                        <%= link_to new_maintenance_path do %>
+                          <i class="fa-duotone fa-screwdriver-wrench" style="--fa-primary-color: #17489b; --fa-secondary-color: #17489b;"></i>
+                        <% end %> 
+                    </td>
+                  </tr> 
+                </tbody> 
+              <% end %>  
+          </table>    
+          </div> 
+        </form>
+      </div>
+      <div class="class-center">
+        <%== pagy_bootstrap_nav(@pagy) %>
+      </div>
+        
+      <%= link_to "Agregar Motor", new_enginer_path, class: 'btn btn-primary' %>
+    </div>
+  </div>  
+</section><!-- End Contact Section -->

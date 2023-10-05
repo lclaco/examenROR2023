@@ -1,0 +1,31 @@
+<!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Motor</h2>
+          <ol>
+            <li><%= link_to 'Inicio', root_path %></li>
+            <li>Motor</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= Contact Section ======= -->   
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="row mt-5 justify-content-center" data-aos="fade-up">
+      <div class="col-lg-10">
+        <form role="form" class="php-email-form">
+              <h3>Nuevo Motor</h3>
+              <%= render "form", enginer: @enginer %>
+        </form>
+      </div>
+      <br>
+    </div>
+    <div class="text-center mb-3">
+      <%= link_to "Volver", enginers_path, class: 'btn btn-primary d-flex justify-content-center' %>
+    </div>
+  </div> 
+</section><!-- End Contact Section -->

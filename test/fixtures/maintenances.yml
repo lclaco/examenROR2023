@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  engine_type: MyString
+  maintenance_type: MyString
+  engine: one
+  city: one
+  material: one
+  maintenance_date: MyString
+  user: one
+
+two:
+  engine_type: MyString
+  maintenance_type: MyString
+  engine: two
+  city: two
+  material: two
+  maintenance_date: MyString
+  user: two

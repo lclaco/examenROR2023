@@ -1,0 +1,25 @@
+<!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-between">
+
+      <div class="logo">
+        Jet Maintain        
+        <%= image_tag 'ico.png', class:"img-fluid" %>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><%= link_to 'Inicio', root_path, class: 'navbar-brand' %></li>         
+          <li><%= link_to 'Términos Legal', terms_index_path, class: 'navbar-brand' %></li> 
+          <% if user_signed_in? %>
+            <%= link_to 'Motores', enginers_path, class: 'navbar-brand' %>
+            <%= link_to 'Mantenimiento', maintenances_path, class: 'navbar-brand' %>
+            Hola <%= current_user.email %>
+          <% end %> 
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+

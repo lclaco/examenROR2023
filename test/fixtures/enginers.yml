@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  equipment_type: MyString
+  name: MyString
+  descripcion: MyText
+
+two:
+  equipment_type: MyString
+  name: MyString
+  descripcion: MyText
